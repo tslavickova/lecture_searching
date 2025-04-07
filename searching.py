@@ -58,6 +58,19 @@ def pattern_search_while(sequence, pattern):
     return pos
 
 
+def binary_search(sequence, number):
+    left = 0
+    right = len(sequence) - 1
+    while right >= left:
+        middle = (left + right) // 2
+        print(sequence[middle])
+        if sequence[middle] == number:
+            return middle
+        elif sequence[middle] > number:
+            right = middle - 1
+        elif sequence[middle] < number:
+            left = middle + 1
+    return None
 
 
 
@@ -67,10 +80,11 @@ def main():
     found_numbers_linear = linear_search(sequential_data, 0)
     print(found_numbers_linear)
     sequential_pattern = pattern_search("sequential.json", "dna_sequence")
+    print(sequential_pattern)
 
 
 if __name__ == '__main__':
     main()
-    sequence = [54, 2, 18, 5, 3, 31, 20, 65, -10, 300, 17, 5]
-    wanted_numbers = [31, 20]
+    sequence = [-51, -12, -3, -3, -1, 2, 8, 13, 14, 14, 14, 21, 22, 23, 24, 25, 48, 63, 64, 70, 72, 78, 90, 102, 120]
+    wanted_numbers = 13
     found_pattern = pattern_search(sequence, wanted_numbers)
